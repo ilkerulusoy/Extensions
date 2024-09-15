@@ -6,20 +6,27 @@
 //
 
 import SwiftUI
+#if os(iOS)
 import UIKit
+#endif
 
 struct HapticFeedbackModifier: ViewModifier {
     let feedbackStyle: SensoryFeedbackWrapper
     @Binding var trigger: Int
     
     func body(content: Content) -> some View {
+#if os(iOS)
         content
             .modifier(ConditionalSensoryFeedbackModifier(feedbackStyle: feedbackStyle, trigger: $trigger))
+#else
+        content
+        
+#endif
     }
 
 }
 
-
+#if os(iOS)
 struct ConditionalSensoryFeedbackModifier: ViewModifier {
     let feedbackStyle: SensoryFeedbackWrapper
     @Binding var trigger: Int
@@ -83,6 +90,7 @@ struct ConditionalSensoryFeedbackModifier: ViewModifier {
         impact.notificationOccurred(oldFeedbackStyle)
     }
 }
+#endif
 
 public enum SensoryFeedbackWrapper {
     case success
