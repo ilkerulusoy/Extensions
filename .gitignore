@@ -14,7 +14,6 @@ DerivedData/
 .netrc
 
 # Documentation
-Docs
 documentation
 downloads
 videos
@@ -25,3 +24,7 @@ Fastlane/Preview.html
 Fastlane/screenshots
 Fastlane/test_output
 Fastlane/README.md
+
+*.doccarchive
+
+!docs/*

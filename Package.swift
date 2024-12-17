@@ -24,7 +24,10 @@ let package = Package(
             name: "Extensions",
             swiftSettings: [
                 .enableExperimentalFeature("StrictConcurrency")
-            ]),
-
+            ],
+            plugins: [
+                .plugin(name: "DocC Plugin", package: "SwiftDocCPlugin")
+            ]
+        ),
     ]
 )
